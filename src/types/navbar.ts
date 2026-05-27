@@ -1,4 +1,4 @@
-export interface navbarItem {
+export interface Navbar {
   label: string;
   link: string;
 }

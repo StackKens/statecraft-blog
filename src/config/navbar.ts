@@ -1,6 +1,6 @@
-import type { navbarItem } from "../types/navbar";
+import type { Navbar } from "../types/navbar";
 
-export const NavbarItem: navbarItem[] = [
+export const NavbarItem: Navbar[] = [
   { label: "Create Account", link: "/register" },
   { label: "Login", link: "/login" },
 ];
