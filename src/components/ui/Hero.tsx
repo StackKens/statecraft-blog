@@ -1,8 +1,8 @@
 import Input from "./Input";
-
+import Wrapper from "./Wrapper";
 export default function Hero() {
   return (
-    <section className="w-full px-4 md:px-8 lg:px-16 py-10">
+    <Wrapper>
       <div className="max-w-7xl mx-auto flex flex-col lg:flex-row items-center justify-between gap-8">
         {/* Left Side */}
         <div className="flex-1 space-y-4 text-center lg:text-left">
@@ -36,6 +36,6 @@ export default function Hero() {
           />
         </div>
       </div>
-    </section>
+    </Wrapper>
   );
 }
