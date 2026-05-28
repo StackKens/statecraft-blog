@@ -11,12 +11,12 @@ export default function FilterBar({
   onFilterChange,
 }: FilterBarProps) {
   return (
-    <Wrapper>
+    <Wrapper className="py-3 md:py-4">
       {/* overflow-x-auto = horizontal scroll on mobile */}
       {/* scrollbar-hide = clean look (add plugin or custom CSS) */}
-      <div className="overflow-x-auto scrollbar-hide">
+      <div className="overflow-x-auto scrollbar-hide ">
         {/* flex-nowrap prevents wrapping, gap-3 keeps pills breathing */}
-        <div className="flex flex-nowrap gap-3 pb-1">
+        <div className="flex flex-nowrap gap-3 pb-1 max-w-7xl mx-auto">
           {Filters.map((filter: Filter) => {
             const isActive = activeFilter === filter.label;
 
