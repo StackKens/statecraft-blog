@@ -15,7 +15,6 @@ export default function Hero() {
             around the world.
           </p>
         </div>
-
         {/* Right Side */}
         <div className="w-full lg:w-auto flex items-center">
           <Input
