@@ -2,20 +2,15 @@ import { useEffect, useState } from "react";
 import Header from "./components/ui/Header";
 import Hero from "./components/ui/Hero";
 import FilterBar from "./components/ui/FilterBar";
-
-interface Post {
-  id: number;
-  title: string;
-  image: string;
-  description: string;
-  details: string;
-}
-
+import { ArrowRight } from "lucide-react";
+import DetailsModal from "./components/ui/DetailsModal";
+import type { Post } from "./types/post";
 export default function App() {
   const [activeFilter, setActiveFilter] = useState("All");
   const [posts, setPosts] = useState<Post[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string>("");
+  const [selectedPost, setSelectedPost] = useState<Post | null>(null);
 
   useEffect(() => {
     async function fetchPosts() {
@@ -98,9 +93,15 @@ export default function App() {
                     <p className="text-gray-600 text-sm mb-3 line-clamp-2">
                       {post.description}
                     </p>
-                    <p className="text-gray-500 text-xs line-clamp-3">
+                    <p className="text-gray-500 text-xs mb-4 line-clamp-3">
                       {post.details}
                     </p>
+                    <button
+                      onClick={() => setSelectedPost(post)}
+                      className="mt-auto inline-flex items-center cursor-pointer gap-2 text-emerald-600 hover:text-emerald-800 font-medium text-sm transition-colors"
+                    >
+                      View more <ArrowRight size={16} />
+                    </button>
                   </div>
                 </div>
               ))}
@@ -108,6 +109,12 @@ export default function App() {
           )}
         </div>
       </section>
+
+      {/* Modal for full details */}
+      <DetailsModal
+        selectedPost={selectedPost}
+        setSelectedPost={setSelectedPost}
+      />
     </div>
   );
 }
