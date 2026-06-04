@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-
 import Header from "./components/ui/Header";
 import Hero from "./components/ui/Hero";
 import FilterBar from "./components/ui/FilterBar";
@@ -11,23 +10,20 @@ interface Post {
   description: string;
   details: string;
 }
+
 export default function App() {
   const [activeFilter, setActiveFilter] = useState("All");
-  //defining states
   const [posts, setPosts] = useState<Post[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string>("");
-
-  //fetching data in the useEffect hook
 
   useEffect(() => {
     async function fetchPosts() {
       try {
         const response = await fetch("src/data/data.json");
         if (!response.ok) {
-          throw new Error(`http error  ${response.status}`);
+          throw new Error(`http error ${response.status}`);
         }
-
         const data = await response.json();
         console.log(data);
         setPosts(data);
@@ -42,33 +38,70 @@ export default function App() {
     }
     fetchPosts();
   }, []);
+
   return (
-    <div>
+    <div className="bg-gray-50 min-h-screen">
       <Header />
       <Hero />
       <FilterBar activeFilter={activeFilter} onFilterChange={setActiveFilter} />
 
-      <section>
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div>
-          {loading && <p>Loading...</p>}
-          {error && (
-            <p className="text-red-300 font-semibold text-xl text-center">
-              Oops!, an error occured, please try again later
-            </p>
+          {/* Loading State */}
+          {loading && (
+            <div className="flex justify-center items-center py-20">
+              <div className="animate-pulse flex flex-col items-center">
+                <div className="w-12 h-12 border-4 border-blue-500 border-t-transparent rounded-full animate-spin"></div>
+                <p className="mt-4 text-gray-600 font-medium">
+                  Loading posts...
+                </p>
+              </div>
+            </div>
           )}
 
-          {/* displaying data in the ui */}
+          {/* Error State */}
+          {error && (
+            <div className="bg-red-50 border-l-4 border-red-500 rounded-md p-6 my-8 mx-auto max-w-2xl">
+              <p className="text-red-700 font-semibold text-center">{error}</p>
+              <p className="text-red-600 text-sm text-center mt-2">
+                Oops! An error occurred. Please try again later.
+              </p>
+            </div>
+          )}
 
-          {!loading && !error && posts.length === 0 ? (
-            <p>No posts yet</p>
-          ) : (
-            <div>
+          {/* Empty State */}
+          {!loading && !error && posts.length === 0 && (
+            <div className="text-center py-20 bg-white rounded-xl shadow-sm">
+              <p className="text-gray-500 text-lg">No posts yet</p>
+            </div>
+          )}
+
+          {/* Posts Grid */}
+          {!loading && !error && posts.length > 0 && (
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8 max-w-7xl mx-auto">
               {posts.map((post) => (
-                <div key={post.id}>
-                  <img src={`${post.image}`} alt={`${post.title}`} />
-                  <p>{post.title}</p>
-                  <p>{post.description}</p>
-                  <p>{post.details}</p>
+                <div
+                  key={post.id}
+                  className="bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300 flex flex-col h-full"
+                >
+                  <div className="relative pt-[56.25%] bg-gray-100">
+                    <img
+                      src={post.image}
+                      alt={post.title}
+                      className="absolute inset-0 w-full h-full object-cover"
+                    />
+                  </div>
+                  <div className="p-5 flex flex-col flex-grow">
+                    <h3 className="text-xl font-bold text-gray-800 mb-2 line-clamp-2">
+                      {post.title}
+                    </h3>
+                    <p className="text-gray-600 text-sm mb-3 line-clamp-2">
+                      {post.description}
+                    </p>
+                    <p className="text-gray-500 text-xs line-clamp-3">
+                      {post.details}
+                    </p>
+                  </div>
                 </div>
               ))}
             </div>
