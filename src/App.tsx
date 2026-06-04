@@ -5,17 +5,18 @@ import Hero from "./components/ui/Hero";
 import FilterBar from "./components/ui/FilterBar";
 
 interface Post {
-  id: string;
+  id: number;
   title: string;
   image: string;
   description: string;
+  details: string;
 }
 export default function App() {
   const [activeFilter, setActiveFilter] = useState("All");
   //defining states
   const [posts, setPosts] = useState<Post[]>([]);
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState("");
+  const [error, setError] = useState<string>("");
 
   //fetching data in the useEffect hook
 
@@ -31,7 +32,9 @@ export default function App() {
         console.log(data);
         setPosts(data);
       } catch (err) {
-        setError(err.message);
+        if (err instanceof Error) {
+          setError(err.message);
+        }
         console.log(err);
       } finally {
         setLoading(false);
@@ -56,15 +59,16 @@ export default function App() {
 
           {/* displaying data in the ui */}
 
-          {posts.length === 0 ? (
+          {!loading && !error && posts.length === 0 ? (
             <p>No posts yet</p>
           ) : (
             <div>
               {posts.map((post) => (
-                <div key={post.title}>
-                  <img src={`${post.image}`} alt="Post title" />
+                <div key={post.id}>
+                  <img src={`${post.image}`} alt={`${post.title}`} />
                   <p>{post.title}</p>
                   <p>{post.description}</p>
+                  <p>{post.details}</p>
                 </div>
               ))}
             </div>
