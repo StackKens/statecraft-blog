@@ -1,82 +1,84 @@
-[
-  {
-    "id": 1,
-    "image": "/public/images/one.jpg",
-    "title": "Inside Phuc Long: Vietnam's Beloved Coffee Culture",
-    "description": "A peek inside one of Vietnam's most iconic café chains, where tradition meets modern retail.",
-    "details": "Phuc Long Coffee & Tea House has been a staple of Vietnamese café culture since 1968. Known for its premium tea and coffee blends, the brand has evolved from a humble tea merchant into a modern café experience. Each store is designed with an industrial-chic aesthetic — warm wood shelving, white subway tiles, and curated product displays featuring signature tea bags, ground coffee, and seasonal blends. Their glass pastry cases are stocked daily with croissants, cakes, and savory bites. Walking in feels like stepping into a space where heritage and contemporary design share the same counter.",
-    "category": "Business"
-  },
-  {
-    "id": 2,
-    "image": "/public/images/two.jpg",
-    "title": "The Architecture of Solitude",
-    "description": "A lone figure sits by a window in a vast, moody interior — a study in space, light, and quiet.",
-    "details": "There is something deeply human about finding a corner of stillness inside a grand building. This image captures a person seated alone at the edge of a curved wall, framed by floor-to-ceiling glass that opens onto a tree-lined street. The industrial ceiling — exposed ducts, fluorescent strips, dark concrete — contrasts sharply with the warm wooden staircase and polished floor below. The architecture does not shout; it holds. Buildings like this remind us that the best spaces don't demand attention — they offer shelter for thought, and sometimes, that is more than enough.",
-    "category": "Agriculture"
-  },
-  {
-    "id": 3,
-    "image": "/public/images/three.jpg",
-    "title": "Wind, White, and Wildflowers",
-    "description": "A portrait of freedom — a woman in white holds baby's breath as the wind carries her hair across an open sky.",
-    "details": "Shot from a low angle against an open blue sky scattered with soft clouds, this portrait captures a moment of effortless joy. The subject wears a flowing white long-sleeved dress, her wavy blonde hair swept dramatically by the wind. She holds a bouquet of baby's breath — delicate white clusters tied with twine — pressed close to her chest. Her gaze drifts upward and away, as if she is listening to something only the wind can say. The combination of the white dress, the wildflowers, and the moving sky creates a timeless, almost cinematic quality that feels both staged and completely spontaneous.",
-    "category": "Agriculture"
-  },
-  {
-    "id": 4,
-    "image": "/public/images/four.jpg",
-    "title": "Old Town Perspectives: A Street Leading to the Baroque",
-    "description": "A narrow cobblestone street in Central Europe frames a stunning baroque church at its end.",
-    "details": "Few urban compositions are as satisfying as a long straight street that terminates in a monument. Here, a narrow pedestrian lane — flanked by colourful tenement buildings in white, terracotta, and ochre — draws the eye directly toward a magnificent baroque church facade. The church's ornate white exterior, crowned with a gold sunburst motif and a cross, stands in confident contrast to the modest street leading up to it. Parked cars and iron bollards anchor the scene firmly in the present, while the cobblestones and classical architecture whisper of centuries past. This appears to be Kraków, Poland — a city where the medieval and the modern coexist with quiet confidence.",
-    "category": "Technology"
-  },
-  {
-    "id": 5,
-    "image": "/public/images/five.jpg",
-    "title": "Chasing Waves Together",
-    "description": "A couple runs barefoot along a misty shoreline, hand in hand, as the ocean rolls in behind them.",
-    "details": "Shot at dusk on a quiet stretch of beach, this image captures the kind of movement that only happens when two people feel completely free. Both dressed in white — he in a linen shirt and light trousers, she in a flowing off-shoulder maxi dress — they run through wet sand as the tide rushes in. Their bare feet leave prints that the waves will soon erase. The sky is soft and hazy, the ocean a muted grey-green, and the mood is warm despite the low light. It is a photograph about trust as much as love — the joy of being pulled forward by someone whose hand you choose to hold.",
-    "category": "Business"
-  },
-  {
-    "id": 6,
-    "image": "/public/images/six.jpg",
-    "title": "The Cyberpunk Arm: Where Humanity Meets Machine",
-    "description": "A robotic prosthetic arm raised against a backdrop of neon — a glimpse into a near-future aesthetic.",
-    "details": "Against a blurred wash of blue, green, and pink neon lights, a mechanical arm is raised in a gesture that is half greeting, half defiance. The arm is intricately detailed — black articulated fingers, segmented panels, metallic joints — built with the aesthetic language of cyberpunk fiction. The wearer is dressed in a yellow jacket, and a second mechanical hand rests lower in the frame. The image sits at the intersection of cosplay artistry, prosthetics technology, and science fiction. It raises a quiet question: as wearable technology becomes more sophisticated, where does the tool end and the self begin?",
-    "category": "AI"
-  },
-  {
-    "id": 7,
-    "image": "/public/images/seven.jpg",
-    "title": "The Heartbeat of Every Device",
-    "description": "A macro shot of a circuit board reveals the intricate, almost beautiful complexity hiding inside our electronics.",
-    "details": "Pull back the plastic shell of almost any device and you will find a world that looks like this — a dense, organised landscape of copper traces, resistors, capacitors, and integrated circuits mounted on a deep blue PCB. The central chip in this image is marked ICS, a clock generator IC commonly found on motherboards. Around it, a crystal oscillator, an electrolytic capacitor, and rows of surface-mount components are soldered with mechanical precision. At macro scale, the board stops being functional and starts being architectural — a city viewed from above, every component a building with a specific job to do. This is the unglamorous foundation of the digital world.",
-    "category": "Technology"
-  },
-  {
-    "id": 8,
-    "image": "/public/images/eight.jpg",
-    "title": "Code on a Red Canvas",
-    "description": "A Samsung Galaxy Note lies screen-up on a vivid red surface, its display reflecting lines of code.",
-    "details": "Bold and minimal at once, this product-style shot places a Samsung Galaxy Note — alongside its matching Aura Red S Pen — flat against a saturated red background. The phone's dark screen reflects what appears to be a code editor, lines of syntax glowing in blue and white like a developer's late-night session. The S Pen is positioned alongside the device, its metallic tip catching a glint of light. The image speaks directly to a generation of developers who build entire products from a device that fits in their pocket. Red has never felt so much like urgency — or possibility.",
-    "category": "Technology"
-  },
-  {
-    "id": 9,
-    "image": "/public/images/nine.jpg",
-    "title": "Running Toward Something Beautiful",
-    "description": "A newlywed couple walks briskly along a seaside promenade, laughing in the golden afternoon light.",
-    "details": "Photographed from above on a wide paved waterfront, this image catches a couple mid-stride — her white lace dress and bridal veil flowing, a bouquet of white flowers in hand, his black suit jacket slung over one shoulder. They hold hands and walk quickly, as if late for something wonderful. The deep blue of the sea fills the entire background, calm and vast. She wears Converse sneakers under her dress — a small, perfect detail that says everything about who they are. The golden hour light gives the scene a warmth that feels less like a wedding photo and more like the opening frame of a great story.",
-    "category": "Technology"
-  },
-  {
-    "id": 10,
-    "image": "/public/images/ten.jpg",
-    "title": "The Language of Money",
-    "description": "Euro coins and US dollar bills scattered together — a quiet commentary on global currencies and value.",
-    "details": "Spread across a soft yellow surface, this flat lay brings together two of the world's most recognised currencies. US $100 bills — Benjamin Franklin's face repeated across the frame — serve as a backdrop for dozens of euro cent coins in varying denominations: 1c, 2c, 5c, 10c, 20c, 50c. The coins are Irish-minted euros, identifiable by the Celtic harp on their reverse. Together they form an image about exchange, globalisation, and the everyday physicality of money in a world that increasingly goes cashless. There is something grounding about seeing currency this way — not as abstract numbers on a screen, but as real, weighty, touchable things.",
-    "category": "Business"
-  }
-]
+{
+  "posts": [
+    {
+      "id": 1,
+      "image": "/public/images/one.jpg",
+      "title": "Inside Phuc Long: Vietnam's Beloved Coffee Culture",
+      "description": "A peek inside one of Vietnam's most iconic café chains, where tradition meets modern retail.",
+      "details": "Phuc Long Coffee & Tea House has been a staple of Vietnamese café culture since 1968. Known for its premium tea and coffee blends, the brand has evolved from a humble tea merchant into a modern café experience. Each store is designed with an industrial-chic aesthetic — warm wood shelving, white subway tiles, and curated product displays featuring signature tea bags, ground coffee, and seasonal blends. Their glass pastry cases are stocked daily with croissants, cakes, and savory bites. Walking in feels like stepping into a space where heritage and contemporary design share the same counter.",
+      "category": "Business"
+    },
+    {
+      "id": 2,
+      "image": "/public/images/two.jpg",
+      "title": "The Architecture of Solitude",
+      "description": "A lone figure sits by a window in a vast, moody interior — a study in space, light, and quiet.",
+      "details": "There is something deeply human about finding a corner of stillness inside a grand building. This image captures a person seated alone at the edge of a curved wall, framed by floor-to-ceiling glass that opens onto a tree-lined street. The industrial ceiling — exposed ducts, fluorescent strips, dark concrete — contrasts sharply with the warm wooden staircase and polished floor below. The architecture does not shout; it holds. Buildings like this remind us that the best spaces don't demand attention — they offer shelter for thought, and sometimes, that is more than enough.",
+      "category": "Agriculture"
+    },
+    {
+      "id": 3,
+      "image": "/public/images/three.jpg",
+      "title": "Wind, White, and Wildflowers",
+      "description": "A portrait of freedom — a woman in white holds baby's breath as the wind carries her hair across an open sky.",
+      "details": "Shot from a low angle against an open blue sky scattered with soft clouds, this portrait captures a moment of effortless joy. The subject wears a flowing white long-sleeved dress, her wavy blonde hair swept dramatically by the wind. She holds a bouquet of baby's breath — delicate white clusters tied with twine — pressed close to her chest. Her gaze drifts upward and away, as if she is listening to something only the wind can say. The combination of the white dress, the wildflowers, and the moving sky creates a timeless, almost cinematic quality that feels both staged and completely spontaneous.",
+      "category": "Agriculture"
+    },
+    {
+      "id": 4,
+      "image": "/public/images/four.jpg",
+      "title": "Old Town Perspectives: A Street Leading to the Baroque",
+      "description": "A narrow cobblestone street in Central Europe frames a stunning baroque church at its end.",
+      "details": "Few urban compositions are as satisfying as a long straight street that terminates in a monument. Here, a narrow pedestrian lane — flanked by colourful tenement buildings in white, terracotta, and ochre — draws the eye directly toward a magnificent baroque church facade. The church's ornate white exterior, crowned with a gold sunburst motif and a cross, stands in confident contrast to the modest street leading up to it. Parked cars and iron bollards anchor the scene firmly in the present, while the cobblestones and classical architecture whisper of centuries past. This appears to be Kraków, Poland — a city where the medieval and the modern coexist with quiet confidence.",
+      "category": "Technology"
+    },
+    {
+      "id": 5,
+      "image": "/public/images/five.jpg",
+      "title": "Chasing Waves Together",
+      "description": "A couple runs barefoot along a misty shoreline, hand in hand, as the ocean rolls in behind them.",
+      "details": "Shot at dusk on a quiet stretch of beach, this image captures the kind of movement that only happens when two people feel completely free. Both dressed in white — he in a linen shirt and light trousers, she in a flowing off-shoulder maxi dress — they run through wet sand as the tide rushes in. Their bare feet leave prints that the waves will soon erase. The sky is soft and hazy, the ocean a muted grey-green, and the mood is warm despite the low light. It is a photograph about trust as much as love — the joy of being pulled forward by someone whose hand you choose to hold.",
+      "category": "Business"
+    },
+    {
+      "id": 6,
+      "image": "/public/images/six.jpg",
+      "title": "The Cyberpunk Arm: Where Humanity Meets Machine",
+      "description": "A robotic prosthetic arm raised against a backdrop of neon — a glimpse into a near-future aesthetic.",
+      "details": "Against a blurred wash of blue, green, and pink neon lights, a mechanical arm is raised in a gesture that is half greeting, half defiance. The arm is intricately detailed — black articulated fingers, segmented panels, metallic joints — built with the aesthetic language of cyberpunk fiction. The wearer is dressed in a yellow jacket, and a second mechanical hand rests lower in the frame. The image sits at the intersection of cosplay artistry, prosthetics technology, and science fiction. It raises a quiet question: as wearable technology becomes more sophisticated, where does the tool end and the self begin?",
+      "category": "AI"
+    },
+    {
+      "id": 7,
+      "image": "/public/images/seven.jpg",
+      "title": "The Heartbeat of Every Device",
+      "description": "A macro shot of a circuit board reveals the intricate, almost beautiful complexity hiding inside our electronics.",
+      "details": "Pull back the plastic shell of almost any device and you will find a world that looks like this — a dense, organised landscape of copper traces, resistors, capacitors, and integrated circuits mounted on a deep blue PCB. The central chip in this image is marked ICS, a clock generator IC commonly found on motherboards. Around it, a crystal oscillator, an electrolytic capacitor, and rows of surface-mount components are soldered with mechanical precision. At macro scale, the board stops being functional and starts being architectural — a city viewed from above, every component a building with a specific job to do. This is the unglamorous foundation of the digital world.",
+      "category": "Technology"
+    },
+    {
+      "id": 8,
+      "image": "/public/images/eight.jpg",
+      "title": "Code on a Red Canvas",
+      "description": "A Samsung Galaxy Note lies screen-up on a vivid red surface, its display reflecting lines of code.",
+      "details": "Bold and minimal at once, this product-style shot places a Samsung Galaxy Note — alongside its matching Aura Red S Pen — flat against a saturated red background. The phone's dark screen reflects what appears to be a code editor, lines of syntax glowing in blue and white like a developer's late-night session. The S Pen is positioned alongside the device, its metallic tip catching a glint of light. The image speaks directly to a generation of developers who build entire products from a device that fits in their pocket. Red has never felt so much like urgency — or possibility.",
+      "category": "Technology"
+    },
+    {
+      "id": 9,
+      "image": "/public/images/nine.jpg",
+      "title": "Running Toward Something Beautiful",
+      "description": "A newlywed couple walks briskly along a seaside promenade, laughing in the golden afternoon light.",
+      "details": "Photographed from above on a wide paved waterfront, this image catches a couple mid-stride — her white lace dress and bridal veil flowing, a bouquet of white flowers in hand, his black suit jacket slung over one shoulder. They hold hands and walk quickly, as if late for something wonderful. The deep blue of the sea fills the entire background, calm and vast. She wears Converse sneakers under her dress — a small, perfect detail that says everything about who they are. The golden hour light gives the scene a warmth that feels less like a wedding photo and more like the opening frame of a great story.",
+      "category": "Technology"
+    },
+    {
+      "id": 10,
+      "image": "/public/images/ten.jpg",
+      "title": "The Language of Money",
+      "description": "Euro coins and US dollar bills scattered together — a quiet commentary on global currencies and value.",
+      "details": "Spread across a soft yellow surface, this flat lay brings together two of the world's most recognised currencies. US $100 bills — Benjamin Franklin's face repeated across the frame — serve as a backdrop for dozens of euro cent coins in varying denominations: 1c, 2c, 5c, 10c, 20c, 50c. The coins are Irish-minted euros, identifiable by the Celtic harp on their reverse. Together they form an image about exchange, globalisation, and the everyday physicality of money in a world that increasingly goes cashless. There is something grounding about seeing currency this way — not as abstract numbers on a screen, but as real, weighty, touchable things.",
+      "category": "Business"
+    }
+  ]
+}

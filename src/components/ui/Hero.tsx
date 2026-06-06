@@ -1,6 +1,15 @@
 import Input from "./Input";
 import Wrapper from "./Wrapper";
-export default function Hero() {
+interface HeroProps {
+  search: string;
+  setSearch: (value: string) => void;
+}
+export default function Hero({ search, setSearch }: HeroProps) {
+  //logic for searching posts
+
+  const handleSearchChange = (e) => {
+    setSearch(e.target.value);
+  };
   return (
     <Wrapper>
       <div className="max-w-7xl mx-auto flex flex-col lg:flex-row items-center justify-between gap-8">
@@ -18,6 +27,7 @@ export default function Hero() {
         {/* Right Side */}
         <div className="w-full lg:w-auto flex items-center">
           <Input
+            onChange={handleSearchChange}
             type="text"
             placeholder="Search posts..."
             className="
@@ -32,6 +42,7 @@ export default function Hero() {
               focus:ring-emerald-300
               transition-all
             "
+            value={search}
           />
         </div>
       </div>

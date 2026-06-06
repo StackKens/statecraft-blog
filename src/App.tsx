@@ -13,6 +13,11 @@ export default function App() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string>("");
   const [selectedPost, setSelectedPost] = useState<Post | null>(null);
+  const [search, setSearch] = useState("");
+
+  const filteredPosts = posts.filter((post) =>
+    post.title.toLowerCase().includes(search.toLowerCase()),
+  );
 
   //fectching data
   useEffect(() => {
@@ -37,7 +42,8 @@ export default function App() {
   return (
     <div className="bg-gray-50 min-h-screen">
       <Header />
-      <Hero />
+      <Hero search={search} setSearch={setSearch} />
+
       <FilterBar activeFilter={activeFilter} onFilterChange={setActiveFilter} />
 
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
@@ -65,16 +71,16 @@ export default function App() {
           )}
 
           {/* Empty State */}
-          {!loading && !error && posts.length === 0 && (
+          {!loading && !error && filteredPosts.length === 0 && (
             <div className="text-center py-20 bg-white rounded-xl shadow-sm">
               <p className="text-gray-500 text-lg">No posts yet</p>
             </div>
           )}
 
           {/* Posts Grid */}
-          {!loading && !error && posts.length > 0 && (
+          {!loading && !error && filteredPosts.length > 0 && (
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8 ">
-              {posts.map((post) => (
+              {filteredPosts.map((post) => (
                 <div
                   key={post.id}
                   className="bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300 flex flex-col h-full max-w-7xl mx-auto"
