@@ -5,6 +5,8 @@ import FilterBar from "./components/ui/FilterBar";
 import { ArrowRight } from "lucide-react";
 import DetailsModal from "./components/ui/DetailsModal";
 import type { Post } from "./types/post";
+
+import { fetchPosts } from "./services/postService";
 export default function App() {
   const [activeFilter, setActiveFilter] = useState("All");
   const [posts, setPosts] = useState<Post[]>([]);
@@ -12,26 +14,24 @@ export default function App() {
   const [error, setError] = useState<string>("");
   const [selectedPost, setSelectedPost] = useState<Post | null>(null);
 
+  //fectching data
   useEffect(() => {
-    async function fetchPosts() {
+    async function loadPosts() {
       try {
-        const response = await fetch("src/data/data.json");
-        if (!response.ok) {
-          throw new Error(`http error ${response.status}`);
-        }
-        const data = await response.json();
-        console.log(data);
+        const data = await fetchPosts();
         setPosts(data);
       } catch (err) {
         if (err instanceof Error) {
           setError(err.message);
+        } else {
+          setError("An unexpected error occurred");
         }
-        console.log(err);
       } finally {
         setLoading(false);
       }
     }
-    fetchPosts();
+
+    loadPosts();
   }, []);
 
   return (
@@ -73,11 +73,11 @@ export default function App() {
 
           {/* Posts Grid */}
           {!loading && !error && posts.length > 0 && (
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8 max-w-7xl mx-auto">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8 ">
               {posts.map((post) => (
                 <div
                   key={post.id}
-                  className="bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300 flex flex-col h-full"
+                  className="bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300 flex flex-col h-full max-w-7xl mx-auto"
                 >
                   <div className="relative pt-[56.25%] bg-gray-100">
                     <img
