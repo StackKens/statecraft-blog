@@ -7,7 +7,7 @@ interface HeroProps {
 export default function Hero({ search, setSearch }: HeroProps) {
   //logic for searching posts
 
-  const handleSearchChange = (e) => {
+  const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSearch(e.target.value);
   };
   return (
