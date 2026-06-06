@@ -15,9 +15,11 @@ export default function App() {
   const [selectedPost, setSelectedPost] = useState<Post | null>(null);
   const [search, setSearch] = useState("");
 
-  const filteredPosts = posts.filter((post) =>
-    post.title.toLowerCase().includes(search.toLowerCase()),
-  );
+  const filteredPosts = posts
+    .filter((post) =>
+      activeFilter === "All" ? true : post.category === activeFilter,
+    )
+    .filter((post) => post.title.toLowerCase().includes(search.toLowerCase()));
 
   //fectching data
   useEffect(() => {

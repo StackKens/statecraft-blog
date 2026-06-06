@@ -4,4 +4,5 @@ export interface Post {
   image: string;
   description: string;
   details: string;
+  category: string;
 }
