@@ -7,9 +7,6 @@ interface HeroProps {
 export default function Hero({ search, setSearch }: HeroProps) {
   //logic for searching posts
 
-  const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setSearch(e.target.value);
-  };
   return (
     <Wrapper>
       <div className="max-w-7xl mx-auto flex flex-col lg:flex-row items-center justify-between gap-8">
@@ -27,7 +24,7 @@ export default function Hero({ search, setSearch }: HeroProps) {
         {/* Right Side */}
         <div className="w-full lg:w-auto flex items-center">
           <Input
-            onChange={handleSearchChange}
+            onChange={(e) => setSearch(e.target.value)}
             type="text"
             placeholder="Search posts..."
             className="
