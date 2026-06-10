@@ -25,7 +25,7 @@ export default function Hero({ search, setSearch }: HeroProps) {
         <div className="w-full lg:w-auto flex items-center">
           <Input
             onChange={(e) => setSearch(e.target.value)}
-            type="text"
+            type="search"
             placeholder="Search posts..."
             className="
               w-full lg:w-87.5
