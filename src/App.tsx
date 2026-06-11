@@ -1,46 +1,22 @@
-import { useEffect, useState } from "react";
 import Header from "./components/ui/Header";
 import Hero from "./components/ui/Hero";
 import FilterBar from "./components/ui/FilterBar";
 import { ArrowRight } from "lucide-react";
 import DetailsModal from "./components/ui/DetailsModal";
+import { usePosts } from "./context/PostContext";
 import type { Post } from "./types/post";
-
-import { fetchPosts } from "./services/postService";
+import { useState } from "react";
 export default function App() {
-  const [activeFilter, setActiveFilter] = useState("All");
-  const [posts, setPosts] = useState<Post[]>([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState<string>("");
   const [selectedPost, setSelectedPost] = useState<Post | null>(null);
-  const [search, setSearch] = useState("");
-
-  const filteredPosts = posts
-    .filter((post) =>
-      activeFilter === "All" ? true : post.category === activeFilter,
-    )
-    .filter((post) => post.title.toLowerCase().includes(search.toLowerCase()));
-
-  //fectching data
-  useEffect(() => {
-    async function loadPosts() {
-      try {
-        const data = await fetchPosts();
-        setPosts(data);
-      } catch (err) {
-        if (err instanceof Error) {
-          setError(err.message);
-        } else {
-          setError("An unexpected error occurred");
-        }
-      } finally {
-        setLoading(false);
-      }
-    }
-
-    loadPosts();
-  }, []);
-
+  const {
+    search,
+    activeFilter,
+    setSearch,
+    loading,
+    error,
+    setActiveFilter,
+    filteredPosts,
+  } = usePosts();
   return (
     <div className="bg-gray-50 min-h-screen">
       <Header />
