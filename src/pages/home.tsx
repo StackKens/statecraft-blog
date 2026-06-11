@@ -1,10 +1,10 @@
-import Header from "./components/ui/Header";
-import Hero from "./components/ui/Hero";
-import FilterBar from "./components/ui/FilterBar";
+import Header from "../components/ui/Header";
+import Hero from "../components/ui/Hero";
+import FilterBar from "../components/ui/FilterBar";
 import { ArrowRight } from "lucide-react";
-import DetailsModal from "./components/ui/DetailsModal";
-import { usePosts } from "./context/PostContext";
-import type { Post } from "./types/post";
+import DetailsModal from "../components/ui/DetailsModal";
+import { usePosts } from "../context/PostContext";
+import type { Post } from "../types/post";
 import { useState } from "react";
 export default function App() {
   const [selectedPost, setSelectedPost] = useState<Post | null>(null);
