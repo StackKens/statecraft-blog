@@ -6,8 +6,10 @@ import DetailsModal from "../components/ui/DetailsModal";
 import { usePosts } from "../context/PostContext";
 import type { Post } from "../types/post";
 import { useState } from "react";
+import LoginRegisterModal from "../components/ui/LoginRegisterModal";
 export default function App() {
   const [selectedPost, setSelectedPost] = useState<Post | null>(null);
+  const [modal, setModal] = useState<"login" | "register" | null>(null);
   const {
     search,
     activeFilter,
@@ -19,7 +21,7 @@ export default function App() {
   } = usePosts();
   return (
     <div className="bg-gray-50 min-h-screen">
-      <Header />
+      <Header modal={modal} setModal={setModal} />
       <Hero search={search} setSearch={setSearch} />
 
       <FilterBar activeFilter={activeFilter} onFilterChange={setActiveFilter} />
@@ -99,6 +101,13 @@ export default function App() {
         selectedPost={selectedPost}
         setSelectedPost={setSelectedPost}
       />
+      {modal !== null && (
+        <LoginRegisterModal
+          activeForm={modal}
+          onSwitch={setModal}
+          onClose={() => setModal(null)}
+        />
+      )}
     </div>
   );
 }

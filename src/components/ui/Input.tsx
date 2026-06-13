@@ -12,7 +12,7 @@ export default function Input({
       <input
         type={type}
         placeholder={placeholder}
-        className={className}
+        className={` focus:ring-2 focus:ring-black/40 rounded-xl ${className}`}
         value={value}
         onChange={onChange}
       />
