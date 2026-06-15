@@ -4,12 +4,15 @@ import "./index.css";
 import App from "./pages/home.tsx";
 import { ThemeProvider } from "./context/ThemeContext.tsx";
 import { PostProvider } from "./context/PostContext.tsx";
+import { AuthProvider } from "./context/AuthConext.tsx";
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
-    <PostProvider>
-      <ThemeProvider>
-        <App />
-      </ThemeProvider>
-    </PostProvider>
+    <AuthProvider>
+      <PostProvider>
+        <ThemeProvider>
+          <App />
+        </ThemeProvider>
+      </PostProvider>
+    </AuthProvider>
   </StrictMode>,
 );
