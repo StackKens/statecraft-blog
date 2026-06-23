@@ -31,10 +31,6 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
 
   //check incase the user has already logged in.
 
-  useEffect(() => {
-    checkStoredAuth();
-  }, []);
-
   async function checkStoredAuth() {
     try {
       const storedToken = null;
@@ -49,6 +45,9 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     }
   }
 
+  useEffect(() => {
+    checkStoredAuth();
+  }, []);
   async function login(email: string, password: string) {
     setIsLoading(true);
 

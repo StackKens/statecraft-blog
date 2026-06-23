@@ -4,5 +4,5 @@ export const Filters: Filter[] = [
   { label: "Technology" },
   { label: "AI" },
   { label: "Agriculture" },
-  { label: "business" },
+  { label: "Business" },
 ];
