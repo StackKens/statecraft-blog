@@ -1,6 +1,6 @@
 import type { Navbar } from "../types/navbar";
 
 export const NavbarItem: Navbar[] = [
-  { label: "Create Account", link: "../pages/register" },
-  { label: "Login", link: "../pages/login" },
+  { label: "Create Account", link: "/register" },
+  { label: "Login", link: "/login" },
 ];
