@@ -1,5 +1,6 @@
 const express = require("express");
 const morgan = require("morgan");
+const pool = require("./db/index");
 require("dotenv").config();
 const app = express();
 
@@ -10,10 +11,18 @@ app.use(express.json());
 //first route
 
 //starting the server
-const start = () => {
+const start = async function () {
   const PORT = process.env.PORT || 5000;
-  console.log("Server is running on port ", PORT);
-  app.listen(PORT);
+  try {
+    await pool.query("SELECT 1");
+    console.log(`DATABASE CONNECTED SUCCESSFULLY!`);
+    app.listen(PORT, () => {
+      console.log(`server running...`);
+    });
+  } catch (error) {
+    console.log(`Database connection failed!`, error.message);
+    process.exit(1);
+  }
 };
 
 start();
