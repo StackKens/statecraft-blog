@@ -49,7 +49,7 @@ export default function Login({ onClose }: LoginProps) {
 
         <button
           type="submit"
-          className="w-full bg-emerald-700 text-white py-2 rounded-xl font-medium hover:bg-emerald-800 transition"
+          className="w-full bg-emerald-700 text-white py-2 rounded-xl cursor-pointer font-medium hover:bg-emerald-800 transition"
         >
           Login
         </button>
