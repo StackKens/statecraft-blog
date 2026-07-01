@@ -1,7 +1,7 @@
 const express = require("express");
-const { Pool } = requre("pg");
+const { Pool } = require("pg");
 const fs = require("fs");
-const path = requre("path");
+const path = require("path");
 require("dotenv").config();
 
 const pool = new Pool({
