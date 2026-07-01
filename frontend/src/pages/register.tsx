@@ -50,7 +50,7 @@ export default function Register({ onClose }: RegisterProps) {
 
       <button
         type="submit"
-        className="w-full bg-emerald-700 text-white py-2 rounded-xl font-medium hover:bg-emerald-800 transition"
+        className="w-full bg-emerald-700 text-white py-2 rounded-xl font-medium hover:bg-emerald-800 cursor-pointer transition"
       >
         Create Account
       </button>

@@ -48,6 +48,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   useEffect(() => {
     checkStoredAuth();
   }, []);
+
   async function login(email: string, password: string) {
     setIsLoading(true);
 
