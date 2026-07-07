@@ -3,12 +3,17 @@ const morgan = require("morgan");
 const pool = require("./db/index");
 require("dotenv").config();
 const app = express();
-
+const cors = require("cors");
 // logging and body parsing middleware
 app.use(morgan("dev"));
 app.use(express.json());
 
-//first route
+app.use(
+  cors({
+    origin: process.env.CLIENT_URL,
+    credentials: true,
+  }),
+);
 
 //starting the server
 const start = async function () {

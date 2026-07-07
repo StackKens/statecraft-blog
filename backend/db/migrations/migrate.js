@@ -1,13 +1,8 @@
 const express = require("express");
-const { Pool } = require("pg");
+const pool = require("../index");
 const fs = require("fs");
 const path = require("path");
 require("dotenv").config();
-
-const pool = new Pool({
-  connectionString: process.env.DB_URL,
-  ssl: { rejectUnauthorized: false },
-});
 
 async function migrate() {
   try {
