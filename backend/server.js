@@ -4,9 +4,6 @@ const pool = require("./db/index");
 require("dotenv").config();
 const app = express();
 const cors = require("cors");
-// logging and body parsing middleware
-app.use(morgan("dev"));
-app.use(express.json());
 
 app.use(
   cors({
@@ -14,15 +11,18 @@ app.use(
     credentials: true,
   }),
 );
+// logging and body parsing middleware
+app.use(morgan("dev"));
+app.use(express.json());
 
 //starting the server
 const start = async function () {
-  const PORT = process.env.PORT || 5000;
+  const PORT = process.env.PORT || 3001;
   try {
     await pool.query("SELECT 1");
     console.log(`DATABASE CONNECTED SUCCESSFULLY!`);
     app.listen(PORT, () => {
-      console.log(`server running...`);
+      console.log(`server running on port ${PORT}...`);
     });
   } catch (error) {
     console.log(`Database connection failed!`, error.message);
