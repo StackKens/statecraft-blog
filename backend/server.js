@@ -5,6 +5,8 @@ require("dotenv").config();
 const app = express();
 const cors = require("cors");
 
+const postRoute = require("./routes/postRoute");
+
 app.use(
   cors({
     origin: process.env.CLIENT_URL,
@@ -15,6 +17,8 @@ app.use(
 app.use(morgan("dev"));
 app.use(express.json());
 
+//getting all posts route
+app.use("/posts", postRoute);
 //starting the server
 const start = async function () {
   const PORT = process.env.PORT || 3001;
