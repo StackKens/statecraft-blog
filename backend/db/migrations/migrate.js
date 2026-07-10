@@ -4,14 +4,18 @@ const fs = require("fs");
 const path = require("path");
 require("dotenv").config();
 
+const migrations = ["001_create_posts_table.sql", "002_create_users_table.sql"];
+
 async function migrate() {
   try {
-    const sql = fs.readFileSync(
-      path.join(__dirname, "migrations", "001_create_posts_table.sql"),
-      "utf-8",
-    );
+    for (const file of migrations) {
+      const sql = fs.readFileSync(
+        path.join(__dirname, "migrations", file),
+        "utf-8",
+      );
+    }
     await pool.query(sql);
-    console.log("migration ran successfully!");
+    console.log(`${file} migration ran successfully!`);
   } catch (error) {
     console.log(`Migration failed!`, error.message);
   } finally {
