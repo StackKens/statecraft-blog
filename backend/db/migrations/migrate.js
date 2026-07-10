@@ -9,13 +9,10 @@ const migrations = ["001_create_posts_table.sql", "002_create_users_table.sql"];
 async function migrate() {
   try {
     for (const file of migrations) {
-      const sql = fs.readFileSync(
-        path.join(__dirname, "migrations", file),
-        "utf-8",
-      );
+      const sql = fs.readFileSync(path.join(__dirname, file), "utf-8");
+      await pool.query(sql);
+      console.log(`${file} migration ran successfully!`);
     }
-    await pool.query(sql);
-    console.log(`${file} migration ran successfully!`);
   } catch (error) {
     console.log(`Migration failed!`, error.message);
   } finally {
