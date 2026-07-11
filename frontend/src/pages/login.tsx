@@ -1,5 +1,7 @@
 import { useState } from "react";
 import Input from "../components/ui/Input";
+import { useAuth } from "../context/AuthConext";
+
 interface LoginProps {
   onClose: () => void;
 }
@@ -7,16 +9,26 @@ interface LoginProps {
 export default function Login({ onClose }: LoginProps) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const auth = useAuth();
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    setError("");
+    setLoading(true);
 
-    console.log({
-      email,
-      password,
-    });
-
-    onClose();
+    try {
+      await auth?.login(email, password);
+      onClose();
+    } catch (err) {
+      if (err instanceof Error) {
+        setError(err.message);
+      }
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -24,7 +36,6 @@ export default function Login({ onClose }: LoginProps) {
       <form onSubmit={handleSubmit} className="space-y-4">
         <div>
           <label className="block mb-1 text-sm font-medium">Email</label>
-
           <Input
             type="email"
             value={email}
@@ -36,7 +47,6 @@ export default function Login({ onClose }: LoginProps) {
 
         <div>
           <label className="block mb-1 text-sm font-medium">Password</label>
-
           <Input
             type="password"
             value={password}
@@ -46,11 +56,14 @@ export default function Login({ onClose }: LoginProps) {
           />
         </div>
 
+        {error && <p className="text-red-500 text-sm">{error}</p>}
+
         <button
           type="submit"
-          className="w-full bg-emerald-700 text-white py-2 rounded-xl cursor-pointer font-medium hover:bg-emerald-800 transition"
+          disabled={loading}
+          className="w-full bg-emerald-700 text-white py-2 rounded-xl cursor-pointer font-medium hover:bg-emerald-800 transition disabled:opacity-50"
         >
-          Login
+          {loading ? "Logging in..." : "Login"}
         </button>
       </form>
 
