@@ -1,5 +1,5 @@
 import { createContext, useContext, useState, useEffect } from "react";
-
+import { loginUser } from "../services/authService";
 // type user
 
 type User = {
@@ -53,13 +53,14 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     setIsLoading(true);
 
     try {
-      const fakeUser: User = { id: 1, email, name: "Alex Ofwono" };
-      const fakeToken = "fake_jwt_token_123";
+      const data = await loginUser(email, password);
 
-      setUser(fakeUser);
-      setToken(fakeToken);
+      setUser(data.user);
+      setToken(data.token);
     } catch (error) {
-      console.log(error);
+      if (error instanceof Error) {
+        throw error;
+      }
     } finally {
       setIsLoading(false);
     }

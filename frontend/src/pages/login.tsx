@@ -1,6 +1,5 @@
 import { useState } from "react";
 import Input from "../components/ui/Input";
-
 interface LoginProps {
   onClose: () => void;
 }
