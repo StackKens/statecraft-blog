@@ -22,7 +22,7 @@ app.use("/posts", postRoute);
 
 //login endpoint
 
-app.use("/api/auth", login);
+app.use("/api/auth", loginRoute);
 //starting the server
 const start = async function () {
   const PORT = process.env.PORT || 3001;
