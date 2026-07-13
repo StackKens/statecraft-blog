@@ -1,4 +1,5 @@
 const pool = require("../db/index");
+const bcrypt = require("bcryptjs");
 
 //function to handle the login
 async function login(req, res) {
@@ -20,6 +21,12 @@ async function login(req, res) {
     }
 
     const user = result.rows[0];
+
+    //compare what user typed in against the hash
+    const isMatch = await bcrypt.compare(password, user.password);
+    if (!isMatch) {
+      return res.status(401).json({ message: "Invalid credentials" });
+    }
     res.json({
       token: "fake token",
       id: user.id,
