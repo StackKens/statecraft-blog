@@ -7,6 +7,7 @@ const cors = require("cors");
 
 const postRoute = require("./routes/postRoute");
 const loginRoute = require("./routes/auth.routes");
+const registerRoute = require("./routes/auth.routes");
 app.use(
   cors({
     origin: process.env.CLIENT_URL,
@@ -21,8 +22,12 @@ app.use(express.json());
 app.use("/posts", postRoute);
 
 //login endpoint
-
 app.use("/api/auth", loginRoute);
+
+//register endpoint
+
+app.use("/api/auth", registerRoute);
+
 //starting the server
 const start = async function () {
   const PORT = process.env.PORT || 3001;
