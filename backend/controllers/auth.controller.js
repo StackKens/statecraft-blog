@@ -10,13 +10,13 @@ async function login(req, res) {
     return res.status(400).json({ message: "Email or password is required!" });
   }
   try {
-    //find user by email
+    //find user by email(check whether the user with the same email already exists)
     const result = await pool.query("SELECT * FROM users WHERE email =$1", [
       email,
     ]);
 
     //check if the user already exists
-    if (result.rows === 0) {
+    if (result.rows.lenght === 0) {
       return res.status(404).json({ message: "Invalid credentials" });
     }
 
