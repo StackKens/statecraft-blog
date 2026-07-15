@@ -1,5 +1,6 @@
 import { useState } from "react";
 import Input from "../components/ui/Input";
+import { useAuth } from "../context/AuthConext";
 
 interface RegisterProps {
   onClose: () => void;
@@ -9,17 +10,26 @@ export default function Register({ onClose }: RegisterProps) {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const auth = useAuth();
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    setError("");
+    setLoading(true);
 
-    console.log({
-      name,
-      email,
-      password,
-    });
-
-    onClose();
+    try {
+      await auth?.register(name, email, password);
+      onClose();
+    } catch (err) {
+      if (err instanceof Error) {
+        setError(err.message);
+      }
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -48,11 +58,14 @@ export default function Register({ onClose }: RegisterProps) {
         onChange={(e) => setPassword(e.target.value)}
       />
 
+      {error && <p className="text-red-500 text-sm">{error}</p>}
+
       <button
         type="submit"
-        className="w-full bg-emerald-700 text-white py-2 rounded-xl font-medium hover:bg-emerald-800 cursor-pointer transition"
+        disabled={loading}
+        className="w-full bg-emerald-700 text-white py-2 rounded-xl font-medium hover:bg-emerald-800 cursor-pointer transition disabled:opacity-50"
       >
-        Create Account
+        {loading ? "Creating Account..." : "Create Account"}
       </button>
     </form>
   );
