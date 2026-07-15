@@ -6,6 +6,11 @@ export async function fetchPosts(): Promise<Post[]> {
   return res.json();
 }
 
+export async function getUserPosts(): Promise<Post[]> {
+  const res = await apiFetch("/posts/me");
+  return res.json();
+}
+
 export async function createPost(post: {
   title: string;
   image?: File | null;
