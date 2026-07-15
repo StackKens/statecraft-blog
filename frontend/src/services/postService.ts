@@ -6,6 +6,11 @@ export async function fetchPosts(): Promise<Post[]> {
   return res.json();
 }
 
+export async function getPostById(id: number): Promise<Post> {
+  const res = await apiFetch(`/posts/${id}`);
+  return res.json();
+}
+
 export async function getUserPosts(): Promise<Post[]> {
   const res = await apiFetch("/posts/me");
   return res.json();
@@ -32,4 +37,34 @@ export async function createPost(post: {
     body: formData,
   });
   return res.json();
+}
+
+export async function updatePost(
+  id: number,
+  post: {
+    title: string;
+    image?: File | null;
+    description: string;
+    details: string;
+    category: string;
+  },
+): Promise<Post> {
+  const formData = new FormData();
+  formData.append("title", post.title);
+  formData.append("description", post.description);
+  formData.append("details", post.details);
+  formData.append("category", post.category);
+  if (post.image) {
+    formData.append("image", post.image);
+  }
+
+  const res = await apiFetch(`/posts/${id}`, {
+    method: "PUT",
+    body: formData,
+  });
+  return res.json();
+}
+
+export async function deletePost(id: number): Promise<void> {
+  await apiFetch(`/posts/${id}`, { method: "DELETE" });
 }

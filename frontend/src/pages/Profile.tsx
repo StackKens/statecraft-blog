@@ -1,9 +1,9 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../context/AuthConext";
-import { getUserPosts } from "../services/postService";
+import { getUserPosts, deletePost } from "../services/postService";
 import type { Post } from "../types/post";
-import { ArrowRight, LogOut } from "lucide-react";
+import { ArrowRight, LogOut, Pencil, Trash2 } from "lucide-react";
 
 export default function Profile() {
   const { user, logout } = useAuth();
@@ -44,6 +44,18 @@ export default function Profile() {
   function handleLogout() {
     logout();
     navigate("/");
+  }
+
+  async function handleDelete(postId: number) {
+    const confirm = window.confirm("Are you sure you want to delete this post?");
+    if (!confirm) return;
+
+    try {
+      await deletePost(postId);
+      setPosts((prev) => prev.filter((p) => p.id !== postId));
+    } catch {
+      // silently fail
+    }
   }
 
   return (
@@ -135,6 +147,22 @@ export default function Profile() {
                     <span className="text-xs text-emerald-600">
                       {post.category}
                     </span>
+                    <div className="ml-auto flex items-center gap-2">
+                      <button
+                        onClick={() => navigate(`/edit/${post.id}`)}
+                        className="text-gray-400 hover:text-emerald-600 cursor-pointer transition"
+                        title="Edit"
+                      >
+                        <Pencil size={14} />
+                      </button>
+                      <button
+                        onClick={() => handleDelete(post.id)}
+                        className="text-gray-400 hover:text-red-500 cursor-pointer transition"
+                        title="Delete"
+                      >
+                        <Trash2 size={14} />
+                      </button>
+                    </div>
                   </div>
                 </div>
               </div>
