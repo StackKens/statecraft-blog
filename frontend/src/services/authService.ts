@@ -1,35 +1,23 @@
-const API_URL = "http://localhost:3000";
+import { apiFetch, setAuthToken } from "./api";
 
 export async function registerUser(name: string, email: string, password: string) {
-  const res = await fetch(`${API_URL}/api/auth/register`, {
+  const res = await apiFetch("/api/auth/register", {
     method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
     body: JSON.stringify({ name, email, password }),
   });
 
-  if (!res.ok) {
-    const error = await res.json();
-    throw new Error(error.message);
-  }
-
-  return res.json();
+  const data = await res.json();
+  setAuthToken(data.token);
+  return data;
 }
 
 export async function loginUser(email: string, password: string) {
-  const res = await fetch(`${API_URL}/api/auth/login`, {
+  const res = await apiFetch("/api/auth/login", {
     method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
     body: JSON.stringify({ email, password }),
   });
 
-  if (!res.ok) {
-    const error = await res.json();
-    throw new Error(error.message);
-  }
-
-  return res.json();
+  const data = await res.json();
+  setAuthToken(data.token);
+  return data;
 }
