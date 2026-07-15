@@ -21,7 +21,7 @@ export default function Home() {
   } = usePosts();
   return (
     <div className="bg-gray-50 min-h-screen">
-      <Header modal={modal} setModal={setModal} />
+      <Header setModal={setModal} />
       <Hero search={search} setSearch={setSearch} />
 
       <FilterBar activeFilter={activeFilter} onFilterChange={setActiveFilter} />

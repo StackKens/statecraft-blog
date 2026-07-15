@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { useAuth } from "../context/AuthConext";
 import { getUserPosts, deletePost } from "../services/postService";
 import type { Post } from "../types/post";
-import { ArrowRight, LogOut, Pencil, Trash2 } from "lucide-react";
+import { LogOut, Pencil, Trash2 } from "lucide-react";
 
 export default function Profile() {
   const { user, logout } = useAuth();
