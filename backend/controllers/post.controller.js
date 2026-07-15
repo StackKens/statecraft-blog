@@ -1,9 +1,23 @@
 const pool = require("../db/index");
 
+const postWithCounts = `
+  SELECT p.*,
+    COALESCE(lc.like_count, 0)::int AS like_count,
+    COALESCE(lc.dislike_count, 0)::int AS dislike_count
+  FROM posts p
+  LEFT JOIN (
+    SELECT post_id,
+      COUNT(*) FILTER (WHERE is_like = true) AS like_count,
+      COUNT(*) FILTER (WHERE is_like = false) AS dislike_count
+    FROM likes
+    GROUP BY post_id
+  ) lc ON p.id = lc.post_id
+`;
+
 async function getAllPosts(req, res) {
   try {
     const result = await pool.query(
-      "SELECT * FROM posts ORDER BY created_at DESC",
+      `${postWithCounts} ORDER BY p.created_at DESC`,
     );
     res.json(result.rows);
   } catch (error) {
@@ -15,7 +29,7 @@ async function getAllPosts(req, res) {
 async function getPostById(req, res) {
   try {
     const id = Number(req.params.id);
-    const result = await pool.query("SELECT * FROM posts WHERE id = $1 ", [id]);
+    const result = await pool.query(`${postWithCounts} WHERE p.id = $1`, [id]);
     if (result.rows.length === 0) {
       return res.status(404).json({ message: "Oops Post  not found" });
     }
@@ -29,7 +43,7 @@ async function getPostById(req, res) {
 async function getUserPosts(req, res) {
   try {
     const result = await pool.query(
-      "SELECT * FROM posts WHERE user_id = $1 ORDER BY created_at DESC",
+      `${postWithCounts} WHERE p.user_id = $1 ORDER BY p.created_at DESC`,
       [req.user.id],
     );
     res.json(result.rows);
