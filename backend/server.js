@@ -39,8 +39,12 @@ const start = async function () {
   try {
     await pool.query("SELECT 1");
     console.log(`DATABASE CONNECTED SUCCESSFULLY!`);
-    app.listen(PORT, () => {
+    const server = app.listen(PORT, "0.0.0.0", () => {
       console.log(`server running on port ${PORT}...`);
+    });
+    server.on("error", (err) => {
+      console.error("Server error:", err);
+      process.exit(1);
     });
   } catch (error) {
     console.log(`Database connection failed!`, error.message);
