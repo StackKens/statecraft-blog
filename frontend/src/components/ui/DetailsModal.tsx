@@ -1,5 +1,7 @@
 import { X } from "lucide-react";
 import type { Post } from "../../types/post";
+import CommentSection from "./CommentSection";
+
 interface DetailsModalProps {
   selectedPost: Post | null;
   setSelectedPost: (post: Post | null) => void;
@@ -46,6 +48,8 @@ export default function DetailsModal({
               <div className="prose prose-sm max-w-none text-gray-600">
                 <p className="whitespace-pre-line">{selectedPost.details}</p>
               </div>
+
+              <CommentSection postId={selectedPost.id} />
             </div>
           </div>
         </div>

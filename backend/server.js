@@ -6,6 +6,7 @@ const app = express();
 const cors = require("cors");
 
 const postRoute = require("./routes/postRoute");
+const commentRoutes = require("./routes/commentRoutes");
 
 const authRoutes = require("./routes/auth.routes");
 
@@ -21,6 +22,9 @@ app.use(express.json());
 
 //getting all posts route
 app.use("/posts", postRoute);
+
+//comments on posts
+app.use("/posts/:postId/comments", commentRoutes);
 
 //login and register endpoints
 app.use("/api/auth", authRoutes);
