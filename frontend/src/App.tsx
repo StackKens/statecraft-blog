@@ -1,6 +1,7 @@
 import { Routes, Route } from "react-router-dom";
 import Home from "./pages/home";
 import CreatePost from "./pages/CreatePost";
+import EditPost from "./pages/EditPost";
 import Profile from "./pages/Profile";
 import NotFound from "./pages/notfound";
 
@@ -9,6 +10,7 @@ export default function App() {
     <Routes>
       <Route path="/" element={<Home />} />
       <Route path="/create" element={<CreatePost />} />
+      <Route path="/edit/:id" element={<EditPost />} />
       <Route path="/profile" element={<Profile />} />
       <Route path="*" element={<NotFound />} />
     </Routes>
