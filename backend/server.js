@@ -5,6 +5,17 @@ require("dotenv").config();
 const app = express();
 const cors = require("cors");
 
+process.on("uncaughtException", (err) => {
+  console.error("UNCAUGHT EXCEPTION:", err);
+});
+process.on("unhandledRejection", (err) => {
+  console.error("UNHANDLED REJECTION:", err);
+});
+
+app.get("/health", (req, res) => {
+  res.json({ status: "ok" });
+});
+
 const postRoute = require("./routes/postRoute");
 const commentRoutes = require("./routes/commentRoutes");
 const likeRoutes = require("./routes/likeRoutes");
