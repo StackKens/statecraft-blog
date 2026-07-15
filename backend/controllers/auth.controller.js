@@ -1,11 +1,13 @@
 const pool = require("../db/index");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
+require("dotenv").config();
 
 // login
 async function login(req, res) {
   const { email, password } = req.body;
 
+  //validate input
   if (!email || !password) {
     return res.status(400).json({ message: "Email and password are required" });
   }
@@ -20,7 +22,7 @@ async function login(req, res) {
     }
 
     const user = result.rows[0];
-
+    //compare user password with the hashed!
     const isMatch = await bcrypt.compare(password, user.password);
     if (!isMatch) {
       return res.status(401).json({ message: "Invalid credentials" });
@@ -99,4 +101,13 @@ async function register(req, res) {
   }
 }
 
-module.exports = { login, register };
+async function getProfile(req, res) {
+  // req.user.id came from the verified token — no re-auth, no session lookup
+  const result = await pool.query(
+    "SELECT id, name, email FROM users WHERE id = $1",
+    [req.user.id],
+  );
+  res.json(result.rows[0]);
+}
+
+module.exports = { login, register, getProfile };

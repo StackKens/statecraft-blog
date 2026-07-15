@@ -6,8 +6,9 @@ const app = express();
 const cors = require("cors");
 
 const postRoute = require("./routes/postRoute");
-const loginRoute = require("./routes/auth.routes");
-const registerRoute = require("./routes/auth.routes");
+
+const authRoutes = require("./routes/auth.routes");
+
 app.use(
   cors({
     origin: process.env.CLIENT_URL,
@@ -21,12 +22,8 @@ app.use(express.json());
 //getting all posts route
 app.use("/posts", postRoute);
 
-//login endpoint
-app.use("/api/auth", loginRoute);
-
-//register endpoint
-
-app.use("/api/auth", registerRoute);
+//login and register endpoints
+app.use("/api/auth", authRoutes);
 
 //starting the server
 const start = async function () {
