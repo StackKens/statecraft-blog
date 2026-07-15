@@ -7,6 +7,7 @@ const cors = require("cors");
 
 const postRoute = require("./routes/postRoute");
 const commentRoutes = require("./routes/commentRoutes");
+const likeRoutes = require("./routes/likeRoutes");
 
 const authRoutes = require("./routes/auth.routes");
 
@@ -25,6 +26,9 @@ app.use("/posts", postRoute);
 
 //comments on posts
 app.use("/posts/:postId/comments", commentRoutes);
+
+//likes on posts
+app.use("/posts/:postId/likes", likeRoutes);
 
 //login and register endpoints
 app.use("/api/auth", authRoutes);
