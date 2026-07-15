@@ -1,5 +1,5 @@
 import { createContext, useContext, useState, useEffect } from "react";
-import { loginUser } from "../services/authService";
+import { loginUser, registerUser } from "../services/authService";
 // type user
 
 type User = {
@@ -15,6 +15,7 @@ type AuthContextType = {
   token: string | null;
   isLoading: boolean;
   login: (email: string, password: string) => Promise<void>;
+  register: (name: string, email: string, password: string) => Promise<void>;
   logout: () => void;
 };
 
@@ -66,6 +67,23 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     }
   }
 
+  async function register(name: string, email: string, password: string) {
+    setIsLoading(true);
+
+    try {
+      const data = await registerUser(name, email, password);
+
+      setUser(data.user);
+      setToken(data.token);
+    } catch (error) {
+      if (error instanceof Error) {
+        throw error;
+      }
+    } finally {
+      setIsLoading(false);
+    }
+  }
+
   function logout() {
     setUser(null);
     setToken(null);
@@ -79,6 +97,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     token,
     isLoading,
     login,
+    register,
     logout,
   };
 
