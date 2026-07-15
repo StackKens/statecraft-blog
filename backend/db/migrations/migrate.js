@@ -4,7 +4,11 @@ const fs = require("fs");
 const path = require("path");
 require("dotenv").config();
 
-const migrations = ["001_create_posts_table.sql", "002_create_users_table.sql"];
+const migrations = [
+  "001_create_posts_table.sql",
+  "002_create_users_table.sql",
+  "003_add_user_id_to_posts.sql",
+];
 
 async function migrate() {
   try {
