@@ -7,7 +7,7 @@ import { usePosts } from "../context/PostContext";
 import type { Post } from "../types/post";
 import { useState } from "react";
 import LoginRegisterModal from "../components/ui/LoginRegisterModal";
-export default function App() {
+export default function Home() {
   const [selectedPost, setSelectedPost] = useState<Post | null>(null);
   const [modal, setModal] = useState<"login" | "register" | null>(null);
   const {
