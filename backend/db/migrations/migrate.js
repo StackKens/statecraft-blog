@@ -8,6 +8,7 @@ const migrations = [
   "001_create_posts_table.sql",
   "002_create_users_table.sql",
   "003_add_user_id_to_posts.sql",
+  "004_add_comments_likes.sql",
 ];
 
 async function migrate() {
