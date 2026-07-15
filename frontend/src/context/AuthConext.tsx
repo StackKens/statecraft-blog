@@ -1,6 +1,10 @@
 import { createContext, useContext, useState, useEffect } from "react";
 import { loginUser, registerUser } from "../services/authService";
-// type user
+import {
+  setAuthToken,
+  getStoredUser,
+  setStoredUser,
+} from "../services/api";
 
 type User = {
   id: number;
@@ -34,10 +38,11 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
 
   async function checkStoredAuth() {
     try {
-      const storedToken = null;
-      if (storedToken) {
-        console.log(storedToken);
-        //later  verify with the server
+      const storedToken = localStorage.getItem("token");
+      const storedUser = getStoredUser();
+      if (storedToken && storedUser) {
+        setToken(storedToken);
+        setUser(storedUser);
       }
     } catch (error) {
       if (error instanceof Error) console.log(error);
@@ -58,6 +63,8 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
 
       setUser(data.user);
       setToken(data.token);
+      setStoredUser(data.user);
+      setAuthToken(data.token);
     } catch (error) {
       if (error instanceof Error) {
         throw error;
@@ -75,6 +82,8 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
 
       setUser(data.user);
       setToken(data.token);
+      setStoredUser(data.user);
+      setAuthToken(data.token);
     } catch (error) {
       if (error instanceof Error) {
         throw error;
@@ -87,8 +96,8 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   function logout() {
     setUser(null);
     setToken(null);
-
-    // later clear the local storage/async storage
+    setStoredUser(null);
+    setAuthToken(null);
   }
 
   //what goes into the box
