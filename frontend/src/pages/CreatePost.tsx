@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../context/AuthConext";
 import { createPost } from "../services/postService";
@@ -7,9 +7,11 @@ import { Filters } from "../config/filters";
 export default function CreatePost() {
   const { user } = useAuth();
   const navigate = useNavigate();
+  const fileInputRef = useRef<HTMLInputElement>(null);
 
   const [title, setTitle] = useState("");
-  const [image, setImage] = useState("");
+  const [image, setImage] = useState<File | null>(null);
+  const [preview, setPreview] = useState<string>("");
   const [description, setDescription] = useState("");
   const [details, setDetails] = useState("");
   const [category, setCategory] = useState("");
@@ -34,6 +36,26 @@ export default function CreatePost() {
 
   const categories = Filters.filter((f) => f.label !== "All");
 
+  function handleFileChange(e: React.ChangeEvent<HTMLInputElement>) {
+    const file = e.target.files?.[0];
+    if (!file) return;
+
+    if (!file.type.startsWith("image/")) {
+      setError("Please select an image file");
+      return;
+    }
+
+    if (file.size > 5 * 1024 * 1024) {
+      setError("Image must be less than 5MB");
+      return;
+    }
+
+    setImage(file);
+    setError("");
+    const url = URL.createObjectURL(file);
+    setPreview(url);
+  }
+
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     setError("");
@@ -42,7 +64,7 @@ export default function CreatePost() {
     try {
       await createPost({
         title,
-        image: image || undefined,
+        image,
         description,
         details,
         category,
@@ -87,14 +109,41 @@ export default function CreatePost() {
           </div>
 
           <div>
-            <label className="block mb-1 text-sm font-medium text-gray-700">Image URL (optional)</label>
+            <label className="block mb-1 text-sm font-medium text-gray-700">Image (optional)</label>
             <input
-              type="text"
-              value={image}
-              onChange={(e) => setImage(e.target.value)}
-              placeholder="/images/your-image.jpg"
-              className="w-full border border-gray-300 rounded-xl px-3 py-2 focus:ring-2 focus:ring-emerald-500 focus:outline-none"
+              type="file"
+              ref={fileInputRef}
+              accept="image/*"
+              onChange={handleFileChange}
+              className="hidden"
             />
+            <button
+              type="button"
+              onClick={() => fileInputRef.current?.click()}
+              className="w-full border border-dashed border-gray-300 rounded-xl px-3 py-8 text-gray-500 hover:border-emerald-500 hover:text-emerald-600 cursor-pointer transition"
+            >
+              {preview ? "Change image" : "Click to upload an image"}
+            </button>
+            {preview && (
+              <div className="mt-3 relative">
+                <img
+                  src={preview}
+                  alt="Preview"
+                  className="w-full h-48 object-cover rounded-xl"
+                />
+                <button
+                  type="button"
+                  onClick={() => {
+                    setImage(null);
+                    setPreview("");
+                    if (fileInputRef.current) fileInputRef.current.value = "";
+                  }}
+                  className="absolute top-2 right-2 bg-red-500 text-white w-6 h-6 rounded-full flex items-center justify-center text-sm cursor-pointer hover:bg-red-600"
+                >
+                  &times;
+                </button>
+              </div>
+            )}
           </div>
 
           <div>

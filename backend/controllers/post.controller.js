@@ -40,7 +40,8 @@ async function getUserPosts(req, res) {
 }
 
 async function createPost(req, res) {
-  const { title, image, description, details, category } = req.body;
+  const { title, description, details, category } = req.body;
+  const image = req.file ? req.file.path : null;
 
   if (!title || !description || !details || !category) {
     return res.status(400).json({ message: "Title, description, details, and category are required" });
@@ -51,7 +52,7 @@ async function createPost(req, res) {
       `INSERT INTO posts (title, image, description, details, category, user_id)
        VALUES ($1, $2, $3, $4, $5, $6)
        RETURNING *`,
-      [title, image || null, description, details, category, req.user.id],
+      [title, image, description, details, category, req.user.id],
     );
     res.status(201).json(result.rows[0]);
   } catch (error) {
@@ -62,7 +63,8 @@ async function createPost(req, res) {
 
 async function updatePost(req, res) {
   const id = Number(req.params.id);
-  const { title, image, description, details, category } = req.body;
+  const { title, description, details, category } = req.body;
+  const image = req.file ? req.file.path : undefined;
 
   try {
     const existing = await pool.query("SELECT * FROM posts WHERE id = $1", [id]);
