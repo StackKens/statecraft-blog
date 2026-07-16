@@ -1,30 +1,12 @@
-require("dotenv").config();
-const express = require("express");
-const cors = require("cors");
+const http = require("http");
 
-const app = express();
-
-app.use(
-  cors({
-    origin: process.env.CLIENT_URL || "*",
-    credentials: true,
-  }),
-);
-
-app.use(express.json());
-
-app.get("/health", (req, res) => {
-  res.json({ status: "ok" });
-});
-
-app.get("/", (req, res) => {
-  res.json({ status: "ok", message: "API is running" });
+const server = http.createServer((req, res) => {
+  console.log(`${req.method} ${req.url}`);
+  res.writeHead(200, { "Content-Type": "application/json" });
+  res.end(JSON.stringify({ status: "ok" }));
 });
 
 const PORT = process.env.PORT || 3001;
-
-app.listen(PORT, "0.0.0.0", () => {
+server.listen(PORT, "0.0.0.0", () => {
   console.log(`Server running on port ${PORT}`);
-  console.log("CLIENT_URL:", process.env.CLIENT_URL);
-  console.log("DB_URL set:", !!process.env.DB_URL);
 });
